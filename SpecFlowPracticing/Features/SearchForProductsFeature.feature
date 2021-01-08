@@ -2,10 +2,10 @@
 	After I search for the product
 	It shown on the Search results page
 
-@mytag
+@tearDown
 Scenario Outline: Search for products
 	Given I navigate to the Home page
-	When I enter the <ProductName> 
+	When I enter the <ProductName> into search input
 	And Click on search button
 	Then The search result page is shown
 	And Results contains <ProductName>
