@@ -104,10 +104,13 @@ namespace SpecFlowPracticing.Steps
         [Then(@"Product has specific (.*) and (.*)")]
         public void ThenProductHasSpecificBlouseAnd(string fullName, string price)
         {
-           
 
-       // dynamic expectedResults = table.CreateDynamicInstance();
-                Assert.That(driver.FindElement(By.XPath("//h1")).Text.Equals(fullName));
+
+            // dynamic expectedResults = table.CreateDynamicInstance();
+            // Assert.That(driver.FindElement(By.XPath("//h1")).Text.Equals(expectedResults.Name));
+            // Assert.AreEqual(driver.FindElement(By.Id("our_price_display")).Text.Replace("$", ""), expectedResults.Price.ToString());
+
+            Assert.That(driver.FindElement(By.XPath("//h1")).Text.Equals(fullName));
                 Assert.AreEqual(driver.FindElement(By.Id("our_price_display")).Text.Replace("$",""), price);
       
         }
