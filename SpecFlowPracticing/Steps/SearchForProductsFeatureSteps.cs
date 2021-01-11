@@ -1,20 +1,21 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace SpecFlowPracticing.Steps
 {
     [Binding]
-    public class SearchForProductsFeatureSteps
+    public class SearchForProductsFeatureSteps : BaseSteps
     {
-        IWebDriver driver;
+       
         [Given(@"I navigate to the Home page")]
         public void GivenINavigateToTheHomePage()
         {
-            driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://automationpractice.com/");
         }
         
@@ -58,6 +59,8 @@ namespace SpecFlowPracticing.Steps
                 Console.WriteLine("Product Size is: " + product.Size);
             }
 
+            //var productDetails = tab
+
             //Выводит тайтл самого сценария
             Console.WriteLine(ScenarioContext.Current.ScenarioInfo.Title);
 
@@ -80,14 +83,41 @@ namespace SpecFlowPracticing.Steps
         [Then(@"Results contains (.*)")]
         public void ThenResultsContainsProductName(string productName)
         {
-          string actual =  driver.FindElement(By.XPath("//div[@class='product-container']//a[@class='product-name']")).Text;
-            Assert.That(actual, Contains.Substring(productName), $"There is no '{productName}' in first search result");
+            Assert.That(driver.FindElement(By.XPath("//div[@class='product-container']//a[@class='product-name']")).Text, 
+                Contains.Substring(productName), 
+                $"There is no '{productName}' in first search result");
         }
 
+        [When(@"I click on More button for first product")]
+        public void WhenIClickOnButtonForFirstProduct()
+        {
+            driver.FindElement(By.XPath("//a[@title='View']")).Click();
+        }
+
+        [Then(@"Product details page is shown")]
+        public void ThenProductDetailsPageIsShown()
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(45)).Until(ExpectedConditions.ElementIsVisible((By.Id("bigpic"))));
+            Assert.AreEqual(driver.FindElement(By.XPath("//h3")).Text, "DATA SHEET");
+        }
+
+        [Then(@"Product has specific (.*) and (.*)")]
+        public void ThenProductHasSpecificBlouseAnd(string fullName, string price)
+        {
+           
+
+       // dynamic expectedResults = table.CreateDynamicInstance();
+                Assert.That(driver.FindElement(By.XPath("//h1")).Text.Equals(fullName));
+                Assert.AreEqual(driver.FindElement(By.Id("our_price_display")).Text.Replace("$",""), price);
+      
+        }
+
+        //можно задавать условия теста используя теги перед сценарием
         [AfterScenario("tearDown")]
         public void TearDown()
         {
             driver.Quit();
         }
+
     }
 }
