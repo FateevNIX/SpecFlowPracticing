@@ -1,13 +1,27 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using SpecFlowPracticing.Pages;
+using TechTalk.SpecFlow;
 
 namespace SpecFlowPracticing.Steps
 {
+    [Binding]
     public class BaseSteps
     {
-       public IWebDriver driver = new ChromeDriver();
+        private BasePage basePage { get; }
+        public BaseSteps(IWebDriver driver)
+        {
+            basePage = new BasePage(driver);
+        }
+
+        /* public void NavigateToURL(string URL)
+         {
+             driver.Navigate().GoToUrl(URL);
+         }*/
+
+        [When(@"I search for the (.*)")]
+        public void WhenISearchForTheproductOnAnyPage(string productName)
+        {
+            basePage.searchForProduct(productName);
+        }
     }
 }
