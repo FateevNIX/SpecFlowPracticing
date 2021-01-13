@@ -18,17 +18,6 @@ namespace SpecFlowPracticing.Steps
             homePage = new HomePage(driver);
         }
 
-        //  protected HomePage homePage;
-        /*
-                public HomePageSteps(IWebDriver driver)
-                {
-                    this.driver = driver;
-                    homePage = new HomePage(driver);
-
-                   *//* driver = ScenarioContext.Current.Get<IWebDriver>("currentDriver");
-                    this.homePage = homePage;*//*
-                }*/
-
         [Given(@"I navigate to the Home page")]
         public void GivenINavigateToTheHomePage()
         {

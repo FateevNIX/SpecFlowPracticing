@@ -27,7 +27,7 @@ namespace SpecFlowPracticing.Pages
         protected IWebElement SubmitButton { get; set; }
 
         public SearchResultsPage searchForProduct(string productName)
-        {
+        { 
             SearchInput.SendKeys(productName);
             SubmitButton.Click();
             return new SearchResultsPage(driver);
