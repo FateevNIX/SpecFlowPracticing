@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
+using SpecFlowPracticing.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,12 +40,13 @@ namespace SpecFlowPracticing.Pages
         }
 
         public ProductDetailsPage clickOnMoreButtonForFirstProduct()
-        {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-
-            //hover product to make 'More' button visible
+        {          
             BasePage basePage = new BasePage(driver);
+            Waiter.wait(driver, FirstProductImage);
+            //hover product to make 'More' button visible
             basePage.MouseHover(FirstProductImage, driver);
+
+            Waiter.wait(driver, MoreButtonForFirstProduct);
 
             MoreButtonForFirstProduct.Click();
             return new ProductDetailsPage(driver);
