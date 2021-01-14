@@ -137,6 +137,71 @@ this.ScenarioInitialize(scenarioInfo);
 #line 16
  testRunner.Then("\"Product successfully added to your shopping cart\" modal is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 17
+ testRunner.When("I click \'Continue shopping\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 18
+ testRunner.Then("Product details page is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 19
+ testRunner.When("I search for the Dress", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+ testRunner.Then("The search result page is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 21
+ testRunner.And("Results contains Printed Summer Dress", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+ testRunner.When("I click on More button for first product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 23
+ testRunner.Then("Product details page is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Quantity",
+                            "Size",
+                            "Colour"});
+                table2.AddRow(new string[] {
+                            "5",
+                            "M",
+                            "Orange"});
+#line 24
+ testRunner.When("I select Quantity, Size, and Colour", ((string)(null)), table2, "When ");
+#line hidden
+#line 27
+ testRunner.And("I click on \'Add to cart\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 28
+ testRunner.Then("\"Product successfully added to your shopping cart\" modal is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 29
+ testRunner.When("I click \'Proceed to checkout\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 30
+ testRunner.Then("Cart page is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "ProductName",
+                            "Colour",
+                            "Size",
+                            "Quantity",
+                            "TotalPrice"});
+                table3.AddRow(new string[] {
+                            "Blouse",
+                            "Black",
+                            "L",
+                            "3",
+                            "$81.00"});
+                table3.AddRow(new string[] {
+                            "Printed Summer Dress",
+                            "Orange",
+                            "M",
+                            "5",
+                            "$144.90"});
+#line 31
+ testRunner.And("It has next products with properties", ((string)(null)), table3, "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
