@@ -13,7 +13,7 @@ namespace SpecFlowPracticing.Pages
 {
     public class ProductDetailsPage
     {
-        private IWebDriver driver;
+        private readonly IWebDriver driver;
         public ProductDetailsPage(IWebDriver driver)
         {
             this.driver = driver;
@@ -30,13 +30,13 @@ namespace SpecFlowPracticing.Pages
         protected IWebElement ProductPrice { get; set; }
 
         [FindsBy(How = How.Id, Using = "quantity_wanted")]
-        protected IWebElement quantityInput { get; set; }
+        protected IWebElement QuantityInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "our_price_display")]
-        protected IWebElement sizeDropdown { get; set; }
+        protected IWebElement SizeDropdown { get; set; }
 
         [FindsBy(How = How.Name, Using = "Submit")]
-        protected IWebElement addToCartButton { get; set; }
+        protected IWebElement AddToCartButton { get; set; }
 
 
 
@@ -53,9 +53,9 @@ namespace SpecFlowPracticing.Pages
 
         private void SelectOptionInDropdown(string optionName)
         {
-            sizeDropdown.Click();
+            SizeDropdown.Click();
             IWebElement option = driver.FindElement(By.XPath($"//option[@title='{optionName}']"));
-            Waiter.wait(driver, option);
+            Waiter.Wait(driver, option);
             option.Click();
         }
 
@@ -68,15 +68,15 @@ namespace SpecFlowPracticing.Pages
         {
             dynamic testData = table.CreateDynamicInstance();
 
-            quantityInput.Clear();
-            quantityInput.SendKeys(testData.Quantity.ToString());
+            QuantityInput.Clear();
+            QuantityInput.SendKeys(testData.Quantity.ToString());
             SelectOptionInDropdown(testData.Size.ToString());
             SelectProductColour(testData.Colour.ToString());
         }
 
         public void ClickOnAddToCartButton()
         {
-            addToCartButton.Click();
+            AddToCartButton.Click();
           //  return new AddToCartModal(driver);
         }
 

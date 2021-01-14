@@ -10,42 +10,42 @@ namespace SpecFlowPracticing.Steps
     [Binding]
     class ProductDetailsPageSteps
     {
-        private ProductDetailsPage productDetailsPage { get; }
-        private AddToCartModal addToCartModal;
+        private ProductDetailsPage ProductDetailsPage { get; }
+        private AddToCartModal AddToCartModal { get; }
         public ProductDetailsPageSteps(IWebDriver driver)
         {
-            productDetailsPage = new ProductDetailsPage(driver);
-            addToCartModal = new AddToCartModal(driver);
+            ProductDetailsPage = new ProductDetailsPage(driver);
+            AddToCartModal = new AddToCartModal(driver);
         }
 
         [When(@"I select Quantity, Size, and Colour")]
         public void WhenISelectQuantitySizeAndColour(Table testData)
         {
-            productDetailsPage.SelectQuantitySizeAndColour(testData);
+            ProductDetailsPage.SelectQuantitySizeAndColour(testData);
         }
 
         [Then(@"Product details page is shown")]
         public void ThenProductDetailsPageIsShown()
         {
-            productDetailsPage.ProductDetailsPageIsShown();
+            ProductDetailsPage.ProductDetailsPageIsShown();
         }
 
         [Then(@"Product has specific (.*) and (.*)")]
         public void ThenProductHasSpecificBlouseAnd(string fullName, string price)
         {
-            productDetailsPage.ProductHasNextNameAndPrice(fullName, price);
+            ProductDetailsPage.ProductHasNextNameAndPrice(fullName, price);
         }
 
         [When(@"I click on 'Add to cart' button")]
         public void WhenIClickOnButton()
         {
-            productDetailsPage.ClickOnAddToCartButton();
+            ProductDetailsPage.ClickOnAddToCartButton();
         }
 
         [Then(@"""(.*)"" modal is shown")]
-        public void ThenModalIsShown(string p0)
+        public void ThenModalIsShown(string modalName)
         {
-            addToCartModal.successfullyAddedModalIsShown();
+            AddToCartModal.SuccessfullyAddedModalIsShown(modalName);
         }
 
 

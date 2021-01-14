@@ -11,7 +11,7 @@ namespace SpecFlowPracticing.Pages
 {
     public class HomePage
     {
-        private IWebDriver driver;
+        private readonly IWebDriver driver;
       
         public HomePage(IWebDriver driver)
         {

@@ -13,7 +13,7 @@ namespace SpecFlowPracticing.Pages
 {
     public class BasePage 
     {
-        private IWebDriver driver;
+        private readonly IWebDriver driver;
         public BasePage(IWebDriver driver) {
             this.driver = driver;
             PageFactory.InitElements(driver, this);
@@ -26,7 +26,7 @@ namespace SpecFlowPracticing.Pages
         [FindsBy(How = How.Name, Using = "submit_search")]
         protected IWebElement SubmitButton { get; set; }
 
-        public SearchResultsPage searchForProduct(string productName)
+        public SearchResultsPage SearchForProduct(string productName)
         { 
             SearchInput.SendKeys(productName);
             SubmitButton.Click();

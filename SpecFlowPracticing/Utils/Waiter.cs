@@ -9,14 +9,12 @@ namespace SpecFlowPracticing.Utils
 {
     public class Waiter
     {
-        public static void wait(IWebDriver driver, IWebElement element)
+        public static void Wait(IWebDriver driver, IWebElement element)
         {
             DefaultWait<IWebDriver> wait = new DefaultWait<IWebDriver>(driver);
             wait.Timeout = TimeSpan.FromMinutes(1);
             wait.PollingInterval = TimeSpan.FromMilliseconds(250);
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
-          
-          
         }
     }
 }

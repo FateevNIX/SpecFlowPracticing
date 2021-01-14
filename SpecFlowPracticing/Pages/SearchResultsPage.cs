@@ -12,7 +12,7 @@ namespace SpecFlowPracticing.Pages
     public class SearchResultsPage
     {
 
-        private IWebDriver driver;
+        private readonly IWebDriver driver;
         public SearchResultsPage(IWebDriver driver)
         {
             this.driver = driver;
@@ -29,24 +29,24 @@ namespace SpecFlowPracticing.Pages
         protected IWebElement MoreButtonForFirstProduct { get; set; }
 
 
-        public string getFirstProductName()
+        public string GetFirstProductName()
         {
             return FirstProductName.Text;
         }
 
-        public void checkSearchResultsPageTitle()
+        public void CheckSearchResultsPageTitle()
         {
             Assert.AreEqual(driver.Title, "Search - My Store", "Title is different!");
         }
 
-        public ProductDetailsPage clickOnMoreButtonForFirstProduct()
+        public ProductDetailsPage ClickOnMoreButtonForFirstProduct()
         {          
             BasePage basePage = new BasePage(driver);
-            Waiter.wait(driver, FirstProductImage);
+            Waiter.Wait(driver, FirstProductImage);
             //hover product to make 'More' button visible
             basePage.MouseHover(FirstProductImage, driver);
 
-            Waiter.wait(driver, MoreButtonForFirstProduct);
+            Waiter.Wait(driver, MoreButtonForFirstProduct);
 
             MoreButtonForFirstProduct.Click();
             return new ProductDetailsPage(driver);

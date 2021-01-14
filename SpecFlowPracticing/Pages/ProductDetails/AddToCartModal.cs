@@ -13,7 +13,7 @@ namespace SpecFlowPracticing.Blocks
     [Binding]
     public class AddToCartModal
     {
-        private IWebDriver driver;
+        private readonly IWebDriver driver;
         public AddToCartModal(IWebDriver driver)
         {
             this.driver = driver;
@@ -21,18 +21,18 @@ namespace SpecFlowPracticing.Blocks
         }
 
         [FindsBy(How = How.XPath, Using = ".//a[@title= 'Proceed to checkout']")]
-        protected IWebElement proceedToCheckoutButton { get; set; }
+        protected IWebElement ProceedToCheckoutButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = ".//a[@title= 'Continue shopping']")]
-        protected IWebElement continueShoppingButton { get; set; }
+        protected IWebElement ContinueShoppingButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = ".//div[@id='layer_cart']//div[contains(@class,'layer_cart_product')]/h2")]
-        protected IWebElement modalTitle { get; set; }
+        protected IWebElement ModalTitle { get; set; }
 
-        public void successfullyAddedModalIsShown()
+        public void SuccessfullyAddedModalIsShown(string modalName)
         {
-            Waiter.wait(driver, proceedToCheckoutButton);
-            Assert.AreEqual(modalTitle.Text, "Product successfully added to your shopping cart");
+            Waiter.Wait(driver, ProceedToCheckoutButton);
+            Assert.AreEqual(ModalTitle.Text, modalName);
         }
     }
 }

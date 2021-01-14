@@ -12,16 +12,16 @@ namespace SpecFlowPracticing.Steps
     [Binding]
     public class HomePageSteps
     {
-        private HomePage homePage { get; }
+        private HomePage HomePage { get; }
         public HomePageSteps(IWebDriver driver)// : base(driver)
         {
-            homePage = new HomePage(driver);
+            HomePage = new HomePage(driver);
         }
 
         [Given(@"I navigate to the Home page")]
         public void GivenINavigateToTheHomePage()
         {
-           homePage.NavigateToURL("http://automationpractice.com/");
+           HomePage.NavigateToURL("http://automationpractice.com/");
         }
 
         /*[When(@"I enter the (.*) into search input")]

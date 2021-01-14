@@ -7,10 +7,10 @@ namespace SpecFlowPracticing.Steps
     [Binding]
     public class BaseSteps
     {
-        private BasePage basePage { get; }
+        private BasePage BasePage { get; }
         public BaseSteps(IWebDriver driver)
         {
-            basePage = new BasePage(driver);
+            BasePage = new BasePage(driver);
         }
 
         /* public void NavigateToURL(string URL)
@@ -21,7 +21,7 @@ namespace SpecFlowPracticing.Steps
         [When(@"I search for the (.*)")]
         public void WhenISearchForTheproductOnAnyPage(string productName)
         {
-            basePage.searchForProduct(productName);
+            BasePage.SearchForProduct(productName);
         }
     }
 }
