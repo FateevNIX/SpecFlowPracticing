@@ -24,25 +24,6 @@ namespace SpecFlowPracticing.Steps
             ProductDetailsPage.SelectQuantitySizeAndColour(testData);
         }
 
-        [When(@"I click on 'Add to cart' button")]
-        public void WhenIClickOnButton()
-        {
-            ProductDetailsPage.ClickOnAddToCartButton();
-        }
-
-        [When(@"I click 'Continue shopping' button")]
-        public void WhenIClickContinueButton()
-        {
-            AddToCartModal.ClickOnContinueShoppingButton();
-        }
-
-        [When(@"I click 'Proceed to checkout' button")]
-        public void WhenIClickproceedToCheckoutButton()
-        {
-            AddToCartModal.ClickOnProceedToCheckoutButton();
-        }
-
-
         [Then(@"Product details page is shown")]
         public void ThenProductDetailsPageIsShown()
         {
@@ -53,6 +34,12 @@ namespace SpecFlowPracticing.Steps
         public void ThenProductHasSpecificBlouseAnd(string fullName, string price)
         {
             ProductDetailsPage.ProductHasNextNameAndPrice(fullName, price);
+        }
+
+        [When(@"I click on 'Add to cart' button")]
+        public void WhenIClickOnButton()
+        {
+            ProductDetailsPage.ClickOnAddToCartButton();
         }
 
         [Then(@"""(.*)"" modal is shown")]
