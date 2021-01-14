@@ -28,7 +28,9 @@ namespace SpecFlowPracticing.Pages
         [FindsBy(How = How.XPath, Using = "//a[@title='View']")]
         protected IWebElement MoreButtonForFirstProduct { get; set; }
 
-
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'bottom-pagination')]//form[@method='post']")]
+        protected IWebElement BottomCompareButton { get; set; }
+        
         public string GetFirstProductName()
         {
             return FirstProductName.Text;
@@ -36,6 +38,8 @@ namespace SpecFlowPracticing.Pages
 
         public void CheckSearchResultsPageTitle()
         {
+            //wait while page is loaded
+            Waiter.Wait(driver, BottomCompareButton);
             Assert.AreEqual(driver.Title, "Search - My Store", "Title is different!");
         }
 

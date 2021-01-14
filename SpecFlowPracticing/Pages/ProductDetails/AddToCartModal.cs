@@ -13,6 +13,7 @@ namespace SpecFlowPracticing.Blocks
     [Binding]
     public class AddToCartModal
     {
+
         private readonly IWebDriver driver;
         public AddToCartModal(IWebDriver driver)
         {
@@ -20,19 +21,34 @@ namespace SpecFlowPracticing.Blocks
             PageFactory.InitElements(driver, this); 
         }
 
-        [FindsBy(How = How.XPath, Using = ".//a[@title= 'Proceed to checkout']")]
+
+        [FindsBy(How = How.XPath, Using = "//a[@title='Proceed to checkout']")]
         protected IWebElement ProceedToCheckoutButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = ".//a[@title= 'Continue shopping']")]
+        [FindsBy(How = How.XPath, Using = "//span[@title='Continue shopping']")]
         protected IWebElement ContinueShoppingButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = ".//div[@id='layer_cart']//div[contains(@class,'layer_cart_product')]/h2")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class,'layer_cart_product')]/h2")]
         protected IWebElement ModalTitle { get; set; }
+
+
 
         public void SuccessfullyAddedModalIsShown(string modalName)
         {
             Waiter.Wait(driver, ProceedToCheckoutButton);
-            Assert.AreEqual(ModalTitle.Text, modalName);
+            Assert.AreEqual(modalName, ModalTitle.Text);
         }
+
+        public void ClickOnContinueShoppingButton()
+        {
+            ContinueShoppingButton.Click();
+        }
+        public CartPage ClickOnProceedToCheckoutButton()
+        {
+            ProceedToCheckoutButton.Click();
+            return new CartPage(driver);
+        }
+
+
     }
 }
