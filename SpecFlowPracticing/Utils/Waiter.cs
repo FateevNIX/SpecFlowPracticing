@@ -9,12 +9,31 @@ namespace SpecFlowPracticing.Utils
 {
     public class Waiter
     {
-        public static void Wait(IWebDriver driver, IWebElement element)
+        public static void WaitForElementToBecomeClickable(IWebDriver driver, IWebElement element)
         {
             DefaultWait<IWebDriver> wait = new DefaultWait<IWebDriver>(driver);
-            wait.Timeout = TimeSpan.FromMinutes(1);
+            wait.Timeout = TimeSpan.FromSeconds(10);
             wait.PollingInterval = TimeSpan.FromMilliseconds(250);
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
+        }
+
+        public static void Wait(IWebDriver driver, IWebElement element)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ElementIsVisible(element));
+        }
+        private static Func<IWebDriver, bool> ElementIsVisible(IWebElement element)
+        {
+            return driver => {
+                try
+                {
+                    return element.Displayed;
+                }
+                catch (Exception)
+                {
+                    // If element is null, stale or if it cannot be located
+                    return false;
+                }
+            };
         }
     }
 }
