@@ -30,7 +30,7 @@ namespace SpecFlowPracticing.Pages
 
         [FindsBy(How = How.XPath, Using = "//div[contains(@class,'bottom-pagination')]//form[@method='post']")]
         protected IWebElement BottomCompareButton { get; set; }
-        
+
         public string GetFirstProductName()
         {
             return FirstProductName.Text;
@@ -44,7 +44,7 @@ namespace SpecFlowPracticing.Pages
         }
 
         public ProductDetailsPage ClickOnMoreButtonForFirstProduct()
-        {          
+        {
             BasePage basePage = new BasePage(driver);
             Waiter.Wait(driver, FirstProductImage);
             //hover product to make 'More' button visible

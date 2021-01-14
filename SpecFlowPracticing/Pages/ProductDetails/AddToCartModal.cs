@@ -18,7 +18,7 @@ namespace SpecFlowPracticing.Blocks
         public AddToCartModal(IWebDriver driver)
         {
             this.driver = driver;
-            PageFactory.InitElements(driver, this); 
+            PageFactory.InitElements(driver, this);
         }
 
 

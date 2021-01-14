@@ -32,8 +32,8 @@ namespace SpecFlowPracticing.Blocks.CartBlocks
 
         private string GetColourAndSize(string productName)
         {
-           return GetTableRowByProductName(productName).FindElement(By.XPath(".//td[@class='cart_description']//small/a")).Text;
-        }    
+            return GetTableRowByProductName(productName).FindElement(By.XPath(".//td[@class='cart_description']//small/a")).Text;
+        }
 
         private string GetQuantityOfProduct(string productName)
         {

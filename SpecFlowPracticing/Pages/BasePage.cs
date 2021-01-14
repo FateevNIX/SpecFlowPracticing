@@ -11,10 +11,11 @@ using SpecFlowPracticing.Steps;
 
 namespace SpecFlowPracticing.Pages
 {
-    public class BasePage 
+    public class BasePage
     {
         private readonly IWebDriver driver;
-        public BasePage(IWebDriver driver) {
+        public BasePage(IWebDriver driver)
+        {
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }

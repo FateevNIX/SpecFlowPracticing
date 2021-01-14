@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SpecFlowPracticing.Pages
 {
-   public class CartPage
+    public class CartPage
     {
         private readonly IWebDriver driver;
         public CartPage(IWebDriver driver)

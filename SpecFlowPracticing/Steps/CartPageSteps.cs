@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 namespace SpecFlowPracticing.Steps
 {
     [Binding]
-   public class CartPageSteps
+    public class CartPageSteps
     {
         private CartPage CartPage { get; }
         private CartTable CartTable { get; }
