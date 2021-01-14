@@ -1,11 +1,7 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace SpecFlowPracticing.Blocks.CartBlocks
 {
