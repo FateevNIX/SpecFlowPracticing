@@ -38,6 +38,8 @@ namespace SpecFlowPracticing.Pages
 
         public void CheckSearchResultsPageTitle()
         {
+            //wait while page is loaded
+            Waiter.Wait(driver, BottomCompareButton);
             Assert.AreEqual(driver.Title, "Search - My Store", "Title is different!");
         }
 
