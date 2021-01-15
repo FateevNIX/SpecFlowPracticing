@@ -3,9 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SpecFlowPracticing.Utils;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SpecFlowPracticing.Pages
 {
@@ -31,6 +30,8 @@ namespace SpecFlowPracticing.Pages
         [FindsBy(How = How.XPath, Using = "//div[contains(@class,'bottom-pagination')]//form[@method='post']")]
         protected IWebElement BottomCompareButton { get; set; }
 
+      
+
         public string GetFirstProductName()
         {
             return FirstProductName.Text;
@@ -39,18 +40,18 @@ namespace SpecFlowPracticing.Pages
         public void CheckSearchResultsPageTitle()
         {
             //wait while page is loaded
-            Waiter.Wait(driver, BottomCompareButton);
+            Waiter.WaitForElementIsDisplayed(driver, BottomCompareButton);
             Assert.AreEqual(driver.Title, "Search - My Store", "Title is different!");
         }
 
         public ProductDetailsPage ClickOnMoreButtonForFirstProduct()
         {
             BasePage basePage = new BasePage(driver);
-            Waiter.Wait(driver, FirstProductImage);
+            Waiter.WaitForElementIsDisplayed(driver, FirstProductImage);
             //hover product to make 'More' button visible
             basePage.MouseHover(FirstProductImage, driver);
 
-            Waiter.Wait(driver, MoreButtonForFirstProduct);
+            Waiter.WaitForElementIsDisplayed(driver, MoreButtonForFirstProduct);
 
             MoreButtonForFirstProduct.Click();
             return new ProductDetailsPage(driver);
