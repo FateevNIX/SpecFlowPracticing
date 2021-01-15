@@ -31,6 +31,25 @@ namespace SpecFlowPracticing.Steps
             CartTable.CheckNameSizeColourAndTotalPriceOfProducts(productsProperties);
         }
 
+        [Then(@"Total price of all products is '(.*)'")]
+        public void ThenTotalPriceOfAllProductsIs(Decimal totalPrice)
+        {
+            CartTable.CheckThatSumOfAllProductsEqualsTotalPrice(totalPrice);
+        }
+
+        [When(@"I delete '(.*)' product from cart")]
+        public void WhenIDeleteSecondProductFromCart(string productName)
+        {
+            CartTable.RemoveProductByProductName(productName);
+        }
+
+        [Then(@"Only '(.*)' product is displayed")]
+        public void ThenOnlyProductIsDisplayed(string productName)
+        {
+            CartTable.CheckThatCartHasOnlyOneProduct(productName);
+        }
+
+
 
     }
 }

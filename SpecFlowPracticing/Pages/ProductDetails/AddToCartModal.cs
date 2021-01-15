@@ -35,7 +35,7 @@ namespace SpecFlowPracticing.Blocks
 
         public void SuccessfullyAddedModalIsShown(string modalName)
         {
-            Waiter.Wait(driver, ProceedToCheckoutButton);
+            Waiter.WaitForElementIsDisplayed(driver, ProceedToCheckoutButton);
             Assert.AreEqual(modalName, ModalTitle.Text);
         }
 
