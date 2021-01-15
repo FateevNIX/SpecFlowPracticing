@@ -55,7 +55,7 @@ namespace SpecFlowPracticing.Pages
         {
             SizeDropdown.Click();
             IWebElement option = driver.FindElement(By.XPath($"//option[@title='{optionName}']"));
-            Waiter.Wait(driver, option);
+            Waiter.WaitForElementIsDisplayed(driver, option);
             option.Click();
         }
 

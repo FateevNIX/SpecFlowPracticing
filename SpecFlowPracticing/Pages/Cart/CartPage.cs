@@ -28,7 +28,7 @@ namespace SpecFlowPracticing.Pages
 
         public void CartPageIsShown()
         {
-            Waiter.Wait(driver, CartTitle);
+            Waiter.WaitForElementIsDisplayed(driver, CartTitle);
             Assert.That(CartTitle.Text.Contains("SHOPPING-CART SUMMARY"));
         }
 
