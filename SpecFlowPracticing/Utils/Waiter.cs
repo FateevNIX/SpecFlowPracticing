@@ -17,10 +17,11 @@ namespace SpecFlowPracticing.Utils
             wait.Until(ExpectedConditions.ElementToBeClickable(element));
         }
 
-        public static void Wait(IWebDriver driver, IWebElement element)
+        public static void WaitForElementIsDisplayed(IWebDriver driver, IWebElement element)
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ElementIsVisible(element));
         }
+
         private static Func<IWebDriver, bool> ElementIsVisible(IWebElement element)
         {
             return driver => {
@@ -31,6 +32,24 @@ namespace SpecFlowPracticing.Utils
                 catch (Exception)
                 {
                     // If element is null, stale or if it cannot be located
+                    return false;
+                }
+            };
+        }
+
+        public static void WaitForElementIsNotDisplayed(IWebDriver driver, IWebElement element)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ElementIsNotVisible(element));
+        }
+        private static Func<IWebDriver, bool> ElementIsNotVisible(IWebElement element)
+        {
+            return driver => {
+                try
+                {
+                    return !element.Displayed;
+                }
+                catch (Exception)
+                {
                     return false;
                 }
             };
