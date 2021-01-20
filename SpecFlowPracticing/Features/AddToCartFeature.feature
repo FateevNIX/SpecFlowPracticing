@@ -38,7 +38,6 @@ Scenario: Adding several products to cart and verify their total sum at Cart pag
 	Given I navigate to the Home page
 	When I search for the Blouse
 	Then The search result page is shown
-	And Results contains Blouse
 	When I click on More button for first product
 	Then Product details page is shown
 	When I click on 'Add to cart' button

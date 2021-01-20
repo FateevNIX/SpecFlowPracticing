@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Threading;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -44,13 +45,16 @@ namespace SpecFlowPracticing.Blocks.CartBlocks
         public void RemoveProductByProductName(string productName)
         {
             ClickOnDeleteButtonForProduct(productName);
-            Waiter.WaitForElementIsNotDisplayed(driver, GetTableRowByProductName(productName));
+            // this waiter doesn't work as expected on current page
+            //Waiter.WaitForElementIsNotDisplayed(driver, GetTableRowByProductName(productName));
+            //So as workaround I have used Thread.Sleep
+            Thread.Sleep(4000);
         }
 
         public void CheckThatCartHasOnlyOneProduct(string productName)
-        {
-            Assert.AreEqual(TableRows.Count, 1);
-            Assert.AreEqual(productName, GetProductName(productName), "Product name was not " + productName);
+        {          
+            Assert.AreEqual(1, TableRows.Count);
+            Assert.AreEqual(productName, GetProductName(productName), $"Expected product name is {productName}, but was {GetProductName(productName)}" );
         }
 
         public void CheckNameSizeColourAndTotalPriceOfProducts(Table table)

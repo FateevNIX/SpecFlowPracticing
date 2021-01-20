@@ -19,12 +19,15 @@ namespace SpecFlowPracticing.Utils
 
         public static void WaitForElementIsDisplayed(IWebDriver driver, IWebElement element)
         {
+
             new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ElementIsVisible(element));
+
         }
 
         private static Func<IWebDriver, bool> ElementIsVisible(IWebElement element)
         {
-            return driver => {
+            return driver =>
+            {
                 try
                 {
                     return element.Displayed;
@@ -43,7 +46,8 @@ namespace SpecFlowPracticing.Utils
         }
         private static Func<IWebDriver, bool> ElementIsNotVisible(IWebElement element)
         {
-            return driver => {
+            return driver =>
+            {
                 try
                 {
                     return !element.Displayed;
