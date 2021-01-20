@@ -33,10 +33,10 @@ namespace SpecFlowPracticing.Blocks
 
 
 
-        public void SuccessfullyAddedModalIsShown(string modalName)
+        public void SuccessfullyAddedModalIsShown()
         {
             Waiter.WaitForElementIsDisplayed(driver, ProceedToCheckoutButton);
-            Assert.AreEqual(modalName, ModalTitle.Text);
+            Assert.AreEqual("Product successfully added to your shopping cart", ModalTitle.Text);
         }
 
         public void ClickOnContinueShoppingButton()

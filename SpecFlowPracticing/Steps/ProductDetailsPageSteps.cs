@@ -56,9 +56,9 @@ namespace SpecFlowPracticing.Steps
         }
 
         [Then(@"""(.*)"" modal is shown")]
-        public void ThenModalIsShown(string modalName)
+        public void ThenModalIsShown()
         {
-            AddToCartModal.SuccessfullyAddedModalIsShown(modalName);
+            AddToCartModal.SuccessfullyAddedModalIsShown();
         }
 
 
