@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
+using SpecFlowPracticing.Blocks;
 using SpecFlowPracticing.Utils;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,7 +31,12 @@ namespace SpecFlowPracticing.Pages
         [FindsBy(How = How.XPath, Using = "//div[contains(@class,'bottom-pagination')]//form[@method='post']")]
         protected IWebElement BottomCompareButton { get; set; }
 
-      
+        [FindsBy(How = How.XPath, Using = "//a[@title='Add to cart']")]
+        protected IList<IWebElement> AddToCartButtons { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='product-image-container']")]
+        protected IList<IWebElement> ProductImages { get; set; }
+
 
         public string GetFirstProductName()
         {
@@ -55,6 +61,20 @@ namespace SpecFlowPracticing.Pages
 
             MoreButtonForFirstProduct.Click();
             return new ProductDetailsPage(driver);
+        }
+
+        public void AddAllProductsToCart()
+        {
+            BasePage basePage = new BasePage(driver);
+            AddToCartModal addToCartModal = new AddToCartModal(driver);
+                for (int i = 0; i < AddToCartButtons.Count; i++)
+                {
+                basePage.MouseHover(ProductImages[i], driver);
+                Waiter.WaitForElementIsDisplayed(driver, AddToCartButtons[i]);
+                AddToCartButtons[i].Click();
+                addToCartModal.SuccessfullyAddedModalIsShown();
+                addToCartModal.ClickOnContinueShoppingButton();
+            }
         }
     }
 }

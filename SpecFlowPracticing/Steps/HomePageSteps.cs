@@ -24,6 +24,20 @@ namespace SpecFlowPracticing.Steps
            HomePage.NavigateToURL("http://automationpractice.com/");
         }
 
+        [When(@"I wait for advertisment to be visible")]
+        public void WhenIWaitForSecondAdvertismentToBeVisible()
+        {
+            HomePage.WaitForSecondAdvertismentToAppear();
+        }
+
+        [When(@"I wait for (.*) advertisment to be visible")]
+        public void WhenIWaitForAdvertismentToBeVisible(string numberOfAdvertisment)
+        {
+            HomePage.WaitForSpecificAdvertisementToAppear(numberOfAdvertisment);
+        }
+
+
+
         /*[When(@"I enter the (.*) into search input")]
         public void WhenIEnterTheProductNameIntoSearchInput(string productName)
         {
@@ -72,16 +86,16 @@ namespace SpecFlowPracticing.Steps
             //shows block type
             Console.WriteLine(ScenarioContext.Current.CurrentScenarioBlock);
         }*/
-       
-       /* 
 
-        
+        /* 
 
-        [AfterScenario("tearDown")]
-        public void TearDown()
-        {
-            driver.Quit();
-        }*/
+
+
+         [AfterScenario("tearDown")]
+         public void TearDown()
+         {
+             driver.Quit();
+         }*/
 
     }
 }

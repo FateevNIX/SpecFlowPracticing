@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SeleniumExtras.PageObjects;
 using OpenQA.Selenium.Interactions;
 using SpecFlowPracticing.Steps;
+using NUnit.Framework;
 
 namespace SpecFlowPracticing.Pages
 {
@@ -25,14 +26,21 @@ namespace SpecFlowPracticing.Pages
         protected IWebElement SearchInput { get; set; }
 
         [FindsBy(How = How.Name, Using = "submit_search")]
-        protected IWebElement SubmitButton { get; set; }
+        protected IWebElement SubmitSearchButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a/span[contains(@class,'cart_quantity')]")]
+        protected IWebElement QuantityOfProductsInCart { get; set; }
 
         public SearchResultsPage SearchForProduct(string productName)
         {
             SearchInput.Clear();
             SearchInput.SendKeys(productName);
-            SubmitButton.Click();
+            SubmitSearchButton.Click();
             return new SearchResultsPage(driver);
+        }
+        public void CartShouldHaveSpecificNumberOfProducts(string productQuantity)
+        {
+            Assert.AreEqual(productQuantity, QuantityOfProductsInCart.Text);
         }
         public void MouseHover(IWebElement element, IWebDriver driver)
         {

@@ -1,11 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using SeleniumExtras.PageObjects;
-using OpenQA.Selenium.Support.UI;
+using SpecFlowPracticing.Utils;
 
 namespace SpecFlowPracticing.Pages
 {
@@ -19,11 +15,31 @@ namespace SpecFlowPracticing.Pages
             PageFactory.InitElements(driver, this);
         }
 
-      //  public HomePage(IWebDriver driver) : base(driver)  {}
+        [FindsBy(How = How.XPath, Using = "//li[@class='homeslider-container']/a[@title='sample-2']")]
+        protected IWebElement SecondSliderAdvertise { get; set; }
+
+        //  public HomePage(IWebDriver driver) : base(driver)  {}
 
         public void NavigateToURL(string URL)
         {
             driver.Navigate().GoToUrl(URL);
+        }
+
+        //hardcode for one particular xPath
+        public void WaitForSecondAdvertismentToAppear()
+        {
+            Waiter.WaitForElementIsDisplayed(driver, SecondSliderAdvertise);
+        }
+
+        //universal method for all similar elements
+        private IWebElement GetAdvertisementByNumber(string numberOfAdvertisment)
+        {
+            return driver.FindElement(By.XPath($"//li[@class='homeslider-container']/a[@title='sample-{numberOfAdvertisment}']"));
+        }
+
+        public void WaitForSpecificAdvertisementToAppear(string numberOfAdvertisment)
+        {
+            Waiter.WaitForElementIsDisplayed(driver, GetAdvertisementByNumber(numberOfAdvertisment));
         }
 
     }

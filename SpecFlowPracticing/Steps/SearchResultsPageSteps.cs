@@ -12,9 +12,11 @@ namespace SpecFlowPracticing.Steps
     public class SearchResultsPageSteps
     {
         private SearchResultsPage SearchResultsPage { get; }
+        private BasePage BasePage { get; }
         public SearchResultsPageSteps(IWebDriver driver) 
         {
             SearchResultsPage = new SearchResultsPage(driver);
+            BasePage = new BasePage(driver);
         }
 
         [Then(@"The search result page is shown")]
@@ -35,5 +37,19 @@ namespace SpecFlowPracticing.Steps
         {
             SearchResultsPage.ClickOnMoreButtonForFirstProduct();
         }
+
+        [When(@"I add all available items to cart")]
+        public void WhenIAddAllAvailableItemsToCart()
+        {
+            SearchResultsPage.AddAllProductsToCart();
+        }
+
+        [Then(@"Product cart should have '(.*)' products")]
+        public void ThenProductCartShouldHaveProducts(string quantityOfProducts)
+        {
+            BasePage.CartShouldHaveSpecificNumberOfProducts(quantityOfProducts);
+        }
+
+
     }
 }
