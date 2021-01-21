@@ -31,6 +31,12 @@ namespace SpecFlowPracticing.Pages
         [FindsBy(How = How.XPath, Using = "//a/span[contains(@class,'cart_quantity')]")]
         protected IWebElement QuantityOfProductsInCart { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//a[@title='Proceed to checkout']")]
+        protected IWebElement ProceedToCheckoutButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//span[@title='Continue shopping']")]
+        protected IWebElement ContinueShoppingButton { get; set; }
+
         public SearchResultsPage SearchForProduct(string productName)
         {
             SearchInput.Clear();
@@ -46,6 +52,21 @@ namespace SpecFlowPracticing.Pages
         {
             Actions action = new Actions(driver);
             action.MoveToElement(element).Perform();
+        }
+
+        public CartPage ClickOnProceedToCheckoutButton()
+        {
+            ProceedToCheckoutButton.Click();
+            return new CartPage(driver);
+        }
+
+        public void ClickOnContinueShoppingButton()
+        {
+            ContinueShoppingButton.Click();
+        }
+        public IWebElement GetProceedToCheckoutButton()
+        {
+            return ProceedToCheckoutButton;
         }
     }
 }

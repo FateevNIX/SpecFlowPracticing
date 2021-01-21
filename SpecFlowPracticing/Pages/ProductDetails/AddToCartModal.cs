@@ -21,34 +21,14 @@ namespace SpecFlowPracticing.Blocks
             PageFactory.InitElements(driver, this);
         }
 
-
-        [FindsBy(How = How.XPath, Using = "//a[@title='Proceed to checkout']")]
-        protected IWebElement ProceedToCheckoutButton { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//span[@title='Continue shopping']")]
-        protected IWebElement ContinueShoppingButton { get; set; }
-
         [FindsBy(How = How.XPath, Using = "//div[contains(@class,'layer_cart_product')]/h2")]
         protected IWebElement ModalTitle { get; set; }
 
-
-
         public void SuccessfullyAddedModalIsShown()
         {
-            Waiter.WaitForElementIsDisplayed(driver, ProceedToCheckoutButton);
+            BasePage page = new BasePage(driver);
+            Waiter.WaitForElementIsDisplayed(driver, page.GetProceedToCheckoutButton());
             Assert.AreEqual("Product successfully added to your shopping cart", ModalTitle.Text);
         }
-
-        public void ClickOnContinueShoppingButton()
-        {
-            ContinueShoppingButton.Click();
-        }
-        public CartPage ClickOnProceedToCheckoutButton()
-        {
-            ProceedToCheckoutButton.Click();
-            return new CartPage(driver);
-        }
-
-
     }
 }

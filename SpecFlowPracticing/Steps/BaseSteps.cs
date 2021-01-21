@@ -23,5 +23,17 @@ namespace SpecFlowPracticing.Steps
         {
             BasePage.SearchForProduct(productName);
         }
+
+        [When(@"I click 'Continue shopping' button")]
+        public void WhenIClickContinueButton()
+        {
+            BasePage.ClickOnContinueShoppingButton();
+        }
+
+        [When(@"I click 'Proceed to checkout' button")]
+        public void WhenIClickproceedToCheckoutButton()
+        {
+            BasePage.ClickOnProceedToCheckoutButton();
+        }
     }
 }

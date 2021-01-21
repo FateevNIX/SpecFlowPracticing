@@ -12,10 +12,13 @@ namespace SpecFlowPracticing.Steps
     {
         private ProductDetailsPage ProductDetailsPage { get; }
         private AddToCartModal AddToCartModal { get; }
+        private BasePage BasePage { get; }
         public ProductDetailsPageSteps(IWebDriver driver)
         {
+
             ProductDetailsPage = new ProductDetailsPage(driver);
             AddToCartModal = new AddToCartModal(driver);
+            BasePage = new BasePage(driver);
         }
 
         [When(@"I select Quantity, Size, and Colour")]
@@ -29,19 +32,6 @@ namespace SpecFlowPracticing.Steps
         {
             ProductDetailsPage.ClickOnAddToCartButton();
         }
-
-        [When(@"I click 'Continue shopping' button")]
-        public void WhenIClickContinueButton()
-        {
-            AddToCartModal.ClickOnContinueShoppingButton();
-        }
-
-        [When(@"I click 'Proceed to checkout' button")]
-        public void WhenIClickproceedToCheckoutButton()
-        {
-            AddToCartModal.ClickOnProceedToCheckoutButton();
-        }
-
 
         [Then(@"Product details page is shown")]
         public void ThenProductDetailsPageIsShown()
