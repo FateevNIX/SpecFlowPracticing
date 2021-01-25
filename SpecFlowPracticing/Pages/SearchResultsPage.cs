@@ -73,6 +73,8 @@ namespace SpecFlowPracticing.Pages
                 Waiter.WaitForElementIsDisplayed(driver, AddToCartButtons[i]);
                 AddToCartButtons[i].Click();
                 addToCartModal.SuccessfullyAddedModalIsShown();
+                if(0 == 0)
+                addToCartModal.ClickOnContinueShoppingButton();
                 addToCartModal.ClickOnContinueShoppingButton();
             }
         }
