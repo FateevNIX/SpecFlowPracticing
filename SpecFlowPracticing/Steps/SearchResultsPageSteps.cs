@@ -1,9 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SpecFlowPracticing.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowPracticing.Steps

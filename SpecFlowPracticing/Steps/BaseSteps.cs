@@ -35,5 +35,12 @@ namespace SpecFlowPracticing.Steps
         {
             BasePage.ClickOnProceedToCheckoutButton();
         }
+
+        [When(@"I click on 'Sign in' button")]
+        public void WhenIClickOnButton()
+        {
+            BasePage.ClickOnSignInButton();
+        }
+
     }
 }

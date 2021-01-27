@@ -50,7 +50,5 @@ namespace SpecFlowPracticing.Steps
         {
             AddToCartModal.SuccessfullyAddedModalIsShown();
         }
-
-
     }
 }

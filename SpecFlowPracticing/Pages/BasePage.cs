@@ -9,6 +9,7 @@ using SeleniumExtras.PageObjects;
 using OpenQA.Selenium.Interactions;
 using SpecFlowPracticing.Steps;
 using NUnit.Framework;
+using SpecFlowPracticing.Pages.CheckOut;
 
 namespace SpecFlowPracticing.Pages
 {
@@ -36,6 +37,9 @@ namespace SpecFlowPracticing.Pages
 
         [FindsBy(How = How.XPath, Using = "//span[@title='Continue shopping']")]
         protected IWebElement ContinueShoppingButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//a[@class='login']")]
+        protected IWebElement SignInButton { get; set; }
 
         public SearchResultsPage SearchForProduct(string productName)
         {
@@ -67,6 +71,12 @@ namespace SpecFlowPracticing.Pages
         public IWebElement GetProceedToCheckoutButton()
         {
             return ProceedToCheckoutButton;
+        }
+
+        public AuthenticationPage ClickOnSignInButton()
+        {
+            SignInButton.Click();
+            return new AuthenticationPage(driver);
         }
     }
 }
